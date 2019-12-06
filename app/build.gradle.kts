@@ -26,12 +26,24 @@ android {
                 "proguard-rules.pro"
             )
         }
+        getByName("debug") {
+            val apiKey:String = project.property("RIJKS_API_KEY") as String
+            buildConfigField("String", "RIJKS_API_KEY", apiKey)
+        }
     }
     androidExtensions {
         isExperimental = true
     }
     dataBinding {
         isEnabled = true
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -63,25 +75,25 @@ dependencies {
     implementation(Libs.material)
 
     //Koin
-    implementation (Libs.koin_androidx_viewmodel)
+    implementation(Libs.koin_androidx_viewmodel)
 
     //Lifecycle Extensions
-    implementation (Libs.lifecycle_extensions)
+    implementation(Libs.lifecycle_extensions)
 
     //Navigation
-    implementation (Libs.navigation_fragment_ktx)
-    implementation (Libs.navigation_ui_ktx)
+    implementation(Libs.navigation_fragment_ktx)
+    implementation(Libs.navigation_ui_ktx)
 
     //Paging
-    implementation (Libs.paging_runtime_ktx)
+    implementation(Libs.paging_runtime_ktx)
 
     //Room
     implementation(Libs.room_ktx)
-    implementation (Libs.room_runtime)
+    implementation(Libs.room_runtime)
     kapt(Libs.room_compiler)
 
     //Work Manager
-    implementation (Libs.work_runtime_ktx)
+    implementation(Libs.work_runtime_ktx)
 
     // Moshi
     implementation(Libs.moshi_kotlin)

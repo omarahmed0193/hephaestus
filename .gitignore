@@ -74,3 +74,4 @@ lint/tmp/
 /.idea/markdown-navigator.xml
 /.idea/misc.xml
 /.idea/render.experimental.xml
+/gradle.properties
