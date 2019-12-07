@@ -2,6 +2,8 @@ package com.afterapps.hephaestus
 
 import android.app.Application
 import com.afterapps.hephaestus.di.dataModule
+import com.afterapps.hephaestus.di.homeModule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class App : Application() {
@@ -10,7 +12,8 @@ class App : Application() {
 
         //Initializing koin modules
         startKoin {
-            modules(listOf(dataModule))
+            androidContext(this@App)
+            modules(listOf(dataModule, homeModule))
         }
     }
 }

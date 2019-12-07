@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="art_entry_card_height">240dp</dimen>
+    <dimen name="art_entry_title_text_padding">8dp</dimen>
+    <dimen name="art_entry_card_corner_radius">8dp</dimen>
+    <dimen name="art_entry_card_elevation">8dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+</resources>

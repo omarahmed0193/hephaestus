@@ -12,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 
@@ -27,12 +28,18 @@ private const val API_KEY = BuildConfig.RIJKS_API_KEY
 //Timeout interval in seconds
 private const val TIMEOUT_INTERVAL = 30L
 
+//Page size limit
+const val PAGE_SIZE_LIMIT = 10
+
+//Page size limit
+const val INITIAL_LOAD_SIZE = 10
+
 class RijksApi {
     interface ApiService {
 
         //GET Request for getting collections data from RijksData API
         @GET("collection")
-        suspend fun getCollections(): CollectionsResponse
+        suspend fun getCollections(@Query("p") pageNumber: Int? = 0): CollectionsResponse
 
         //GET Request for getting collection details data from RijksData API
         @GET("collection/{objectNumber}")
