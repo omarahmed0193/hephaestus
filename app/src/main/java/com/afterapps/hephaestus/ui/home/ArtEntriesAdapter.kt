@@ -1,42 +1,95 @@
 package com.afterapps.hephaestus.ui.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.afterapps.hephaestus.databinding.ItemArtCardBinding
+import com.afterapps.hephaestus.R
+import com.afterapps.hephaestus.databinding.ItemArtEntryCardBinding
 import com.afterapps.hephaestus.model.domain.ArtEntry
+import com.afterapps.hephaestus.model.domain.ArtEntryDiffCallback
+import com.afterapps.hephaestus.network.NetworkStatus
+
+private const val TYPE_ART = 1
+private const val TYPE_PROGRESS = 2
 
 class ArtEntriesAdapter :
-    PagedListAdapter<ArtEntry, ArtEntriesAdapter.ArtEntryViewHolder>(DiffCallback) {
+    PagedListAdapter<ArtEntry, RecyclerView.ViewHolder>(ArtEntryDiffCallback) {
 
-    companion object DiffCallback : DiffUtil.ItemCallback<ArtEntry>() {
-        override fun areItemsTheSame(oldItem: ArtEntry, newItem: ArtEntry): Boolean {
-            return oldItem.objectNumber == newItem.objectNumber
+
+    private var networkStatus: NetworkStatus? = null
+
+    // True only if the status is new content loading
+    private fun hasExtraRow() = networkStatus != null && networkStatus == NetworkStatus.Loading
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return when (viewType) {
+            TYPE_ART -> ArtEntryViewHolder(
+                DataBindingUtil.inflate(
+                    inflater,
+                    R.layout.item_art_entry_card,
+                    parent,
+                    false
+                )
+            )
+            TYPE_PROGRESS -> ArtEntryProgressViewHolder(
+                inflater.inflate(
+                    R.layout.item_art_entry_progress,
+                    parent,
+                    false
+                )
+            )
+            else -> throw IllegalArgumentException("unknown view type $viewType")
         }
+    }
 
-        override fun areContentsTheSame(oldItem: ArtEntry, newItem: ArtEntry): Boolean {
-            return oldItem == newItem
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (getItemViewType(position) == TYPE_ART) {
+            val artEntry = getItem(position)
+            artEntry?.let { (holder as ArtEntryViewHolder).bind(it) }
         }
-
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtEntryViewHolder {
-        val binding = ItemArtCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ArtEntryViewHolder(binding)
+    // Adding extra item if there is new content loading
+    override fun getItemCount(): Int {
+        return super.getItemCount() + if (hasExtraRow()) 1 else 0
     }
 
-    override fun onBindViewHolder(holder: ArtEntryViewHolder, position: Int) {
-        val artEntry = getItem(position)
-        artEntry?.let { holder.bind(it) }
+    override fun getItemViewType(position: Int): Int {
+        return if (hasExtraRow() && position == itemCount - 1) {
+            TYPE_PROGRESS
+        } else {
+            TYPE_ART
+        }
     }
 
-    inner class ArtEntryViewHolder(private val binding: ItemArtCardBinding) :
+    inner class ArtEntryViewHolder(private val binding: ItemArtEntryCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(artEntry: ArtEntry) {
             binding.artEntry = artEntry
             binding.executePendingBindings()
+        }
+    }
+
+    inner class ArtEntryProgressViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    // Adds/Removes loading item and notify the adapter
+    fun setNetworkState(newNetworkStatus: NetworkStatus?) {
+        val previousState = this.networkStatus
+        val hadExtraRow = hasExtraRow()
+        this.networkStatus = newNetworkStatus
+        val hasExtraRow = hasExtraRow()
+        if (hadExtraRow != hasExtraRow) {
+            if (hadExtraRow) {
+                notifyItemRemoved(super.getItemCount())
+            } else {
+                notifyItemInserted(super.getItemCount())
+            }
+        } else if (hasExtraRow && previousState != newNetworkStatus) {
+            notifyItemChanged(itemCount - 1)
         }
     }
 }

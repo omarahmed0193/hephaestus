@@ -28,18 +28,19 @@ private const val API_KEY = BuildConfig.RIJKS_API_KEY
 //Timeout interval in seconds
 private const val TIMEOUT_INTERVAL = 30L
 
-//Page size limit
-const val PAGE_SIZE_LIMIT = 10
-
-//Page size limit
-const val INITIAL_LOAD_SIZE = 10
+// Default artist
+private const val DEFAULT_MAKER = "Rembrandt+van+Rijn"
 
 class RijksApi {
+
     interface ApiService {
 
         //GET Request for getting collections data from RijksData API
         @GET("collection")
-        suspend fun getCollections(@Query("p") pageNumber: Int? = 0): CollectionsResponse
+        suspend fun getCollections(
+            @Query("p") pageNumber: Int? = 0,
+            @Query(value = "involvedMaker", encoded = true) involvedMaker: String = DEFAULT_MAKER
+        ): CollectionsResponse
 
         //GET Request for getting collection details data from RijksData API
         @GET("collection/{objectNumber}")
@@ -88,3 +89,6 @@ class RijksApi {
         return retroFit.create(ApiService::class.java)
     }
 }
+
+// Enum for network status to update the UI
+enum class NetworkStatus { Loading, Idle, Error }

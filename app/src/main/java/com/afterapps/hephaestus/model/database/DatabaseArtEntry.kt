@@ -11,5 +11,5 @@ data class DatabaseArtEntry(
     val title: String,
     val longTitle: String,
     val indexInResponse: Int? = -1, //used to sort art entries in database
-    val pageNumber: Int? = 0 //next page number for BoundaryCallback
+    val pageNumber: Int //next page number for BoundaryCallback
 )

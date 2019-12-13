@@ -1,9 +1,23 @@
 package com.afterapps.hephaestus.model.domain
 
+import androidx.recyclerview.widget.DiffUtil
+
 data class ArtEntry(
     val objectNumber: String,
     val imgUrl: String,
     val title: String,
     val longTitle: String,
-    val pageNumber: Int? = 0 //next page number for BoundaryCallback
+    val pageNumber: Int //next page number for BoundaryCallback
 )
+
+// DiffCallback for the pager adapter
+object ArtEntryDiffCallback : DiffUtil.ItemCallback<ArtEntry>() {
+    override fun areItemsTheSame(oldItem: ArtEntry, newItem: ArtEntry): Boolean {
+        return oldItem.objectNumber == newItem.objectNumber
+    }
+
+    override fun areContentsTheSame(oldItem: ArtEntry, newItem: ArtEntry): Boolean {
+        return oldItem == newItem
+    }
+
+}

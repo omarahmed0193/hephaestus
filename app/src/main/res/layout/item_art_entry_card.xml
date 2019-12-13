@@ -8,6 +8,10 @@
         <variable
             name="artEntry"
             type="com.afterapps.hephaestus.model.domain.ArtEntry" />
+
+        <variable
+            name="onArtEntryClick"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -15,6 +19,7 @@
         android:layout_height="@dimen/art_entry_card_height"
         android:layout_marginTop="@dimen/margin_medium"
         android:layout_marginBottom="@dimen/margin_medium"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="@dimen/art_entry_card_corner_radius"
         app:cardElevation="@dimen/art_entry_card_elevation">
 

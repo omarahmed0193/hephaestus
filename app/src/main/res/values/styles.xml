@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,6 +9,16 @@
     </style>
 
     <!--Text appearance styles-->
+    <style name="TextAppearance.Hephaestus.Headline3" parent="TextAppearance.AppCompat.Display2">
+        <item name="fontFamily">@font/font_family_worksans_regular</item>
+        <item name="android:fontFamily">@font/font_family_worksans_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
     <style name="TextAppearance.Hephaestus.Headline4" parent="TextAppearance.AppCompat.Display1">
         <item name="fontFamily">@font/font_family_worksans_medium</item>
         <item name="android:fontFamily">@font/font_family_worksans_medium</item>

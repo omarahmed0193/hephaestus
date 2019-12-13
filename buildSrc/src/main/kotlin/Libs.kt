@@ -9,8 +9,8 @@ object Libs {
      * https://github.com/Kotlin/kotlinx.coroutines
      */
     const val kotlinx_coroutines_android: String =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
-                Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
     /**
      * https://github.com/Kotlin/kotlinx.coroutines
@@ -52,21 +52,21 @@ object Libs {
      * https://kotlinlang.org/
      */
     const val kotlin_android_extensions: String =
-        "org.jetbrains.kotlin:kotlin-android-extensions:" + Versions.org_jetbrains_kotlin
+            "org.jetbrains.kotlin:kotlin-android-extensions:" + Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
      */
     const val kotlin_android_extensions_runtime: String =
-        "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
-                Versions.org_jetbrains_kotlin
+            "org.jetbrains.kotlin:kotlin-android-extensions-runtime:" +
+            Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
      */
     const val kotlin_annotation_processing_gradle: String =
-        "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
-                Versions.org_jetbrains_kotlin
+            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
+            Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
@@ -90,7 +90,7 @@ object Libs {
      * https://developer.android.com/topic/libraries/architecture/index.html
      */
     const val navigation_safe_args_gradle_plugin: String =
-        "androidx.navigation:navigation-safe-args-gradle-plugin:" + Versions.androidx_navigation
+            "androidx.navigation:navigation-safe-args-gradle-plugin:" + Versions.androidx_navigation
 
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html
@@ -131,15 +131,15 @@ object Libs {
     const val junit_junit: String = "junit:junit:" + Versions.junit_junit
 
     const val de_fayard_buildsrcversions_gradle_plugin: String =
-        "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
-                Versions.de_fayard_buildsrcversions_gradle_plugin
+            "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
+            Versions.de_fayard_buildsrcversions_gradle_plugin
 
     /**
      * https://github.com/JakeWharton/retrofit2-kotlin-coroutines-adapter/
      */
     const val retrofit2_kotlin_coroutines_adapter: String =
-        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:" +
-                Versions.retrofit2_kotlin_coroutines_adapter
+            "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:" +
+            Versions.retrofit2_kotlin_coroutines_adapter
 
     const val koin_androidx_viewmodel: String = "org.koin:koin-androidx-viewmodel:" +
             Versions.koin_androidx_viewmodel

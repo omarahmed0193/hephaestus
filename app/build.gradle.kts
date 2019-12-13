@@ -116,8 +116,8 @@ dependencies {
     // LiveEvent
     implementation(Libs.liveevent)
 
-    //Facebook Shimmer
-    implementation(Libs.shimmer)
+    // Lottie
+    implementation("com.airbnb.android:lottie:3.3.1")
 
     //Testing
     testImplementation("junit:junit:4.12")

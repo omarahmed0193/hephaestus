@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Hephaestus</string>
+    <string name="app_name">Rijks</string>
+    <string name="loading_state_art_entries_message">Set tight we\'re fetching your art</string>
 </resources>

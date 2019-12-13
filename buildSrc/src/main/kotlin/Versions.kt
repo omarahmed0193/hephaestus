@@ -1,3 +1,4 @@
+
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -11,9 +12,9 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.2-1.3.60"
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.3"
 
-    const val com_squareup_retrofit2: String = "2.6.2"
+    const val com_squareup_retrofit2: String = "2.7.0"
 
     const val androidx_databinding: String = "3.5.3"
 
@@ -85,4 +86,4 @@ object Versions {
  */
 val PluginDependenciesSpec.buildSrcVersions: PluginDependencySpec
     inline get() =
-        id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)
+            id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)
