@@ -8,8 +8,7 @@ data class ArtEntry(
     val imgUrl: String,
     val title: String,
     val longTitle: String,
-    val width: Int,
-    val height: Int,
+    val artRatio: Float,
     val pageNumber: Int //next page number for BoundaryCallback
 ) : Serializable
 

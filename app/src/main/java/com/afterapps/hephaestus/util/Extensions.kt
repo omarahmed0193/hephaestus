@@ -12,8 +12,7 @@ fun ArtObject.asDatabaseObject(pageNumber: Int, indexInResponse: Int): DatabaseA
         imgUrl = webImage.url,
         title = title,
         longTitle = longTitle,
-        width = webImage.width,
-        height = webImage.height,
+        artRatio = webImage.width.toFloat() / webImage.height.toFloat(),
         indexInResponse = indexInResponse,
         pageNumber = pageNumber
     )

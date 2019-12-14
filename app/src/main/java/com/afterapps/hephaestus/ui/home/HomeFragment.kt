@@ -59,8 +59,7 @@ class HomeFragment : Fragment() {
 
         // Adding transition views and names to fragment bundle for the shared element transition
         val extras = FragmentNavigatorExtras(
-            artItemListing.artImageView to "artImageView",
-            artItemListing.artTitleTextView to "artTitleTextView"
+            artItemListing.artImageView to artItemListing.artImageView.transitionName
         )
         findNavController().navigate(
             HomeFragmentDirections.navigateToArtDetails(artItemListing.artEntry),

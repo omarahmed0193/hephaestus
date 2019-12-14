@@ -1,7 +1,6 @@
 package com.afterapps.hephaestus.ui.home
 
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.afterapps.hephaestus.base.BaseViewModel
@@ -38,16 +37,14 @@ class HomeViewModel(private val rijksRepository: RijksRepository) : BaseViewMode
     // Handle art item click
     override fun onArtEntryClick(
         artEntry: ArtEntry,
-        artImageView: ImageView,
-        artTitleTextView: TextView
+        artImageView: ImageView
     ) {
-        _navigateToArtEntryDetails.value = ArtItemListing(artEntry, artImageView, artTitleTextView)
+        _navigateToArtEntryDetails.value = ArtItemListing(artEntry, artImageView)
     }
 }
 
 data class ArtItemListing(
     val artEntry: ArtEntry,
-    val artImageView: ImageView,
-    val artTitleTextView: TextView
+    val artImageView: ImageView
 )
 

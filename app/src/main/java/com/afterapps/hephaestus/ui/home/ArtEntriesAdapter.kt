@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -74,7 +73,6 @@ class ArtEntriesAdapter(private val artEntryReactor: ArtEntryReactor) :
             binding.artEntry = artEntry
             binding.artEntryReactor = artEntryReactor
             binding.artEntryImageView = binding.artImageView
-            binding.artEntryTitleTextView = binding.artTitleTextView
             binding.executePendingBindings()
         }
     }
@@ -101,5 +99,5 @@ class ArtEntriesAdapter(private val artEntryReactor: ArtEntryReactor) :
 
 // Interface to handle items click
 interface ArtEntryReactor {
-    fun onArtEntryClick(artEntry: ArtEntry, artImageView: ImageView, artTitleTextView: TextView)
+    fun onArtEntryClick(artEntry: ArtEntry, artImageView: ImageView)
 }
