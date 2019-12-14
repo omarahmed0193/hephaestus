@@ -4,6 +4,7 @@ import androidx.room.Room
 import com.afterapps.hephaestus.database.RijksDatabase
 import com.afterapps.hephaestus.network.RijksApi
 import com.afterapps.hephaestus.repository.RijksRepository
+import com.afterapps.hephaestus.ui.details.ArtDetailsViewModel
 import com.afterapps.hephaestus.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -28,4 +29,7 @@ val homeModule = module {
 
     //Home viewModel
     viewModel { HomeViewModel(rijksRepository = get()) }
+
+    // Art details viewModel
+    viewModel { ArtDetailsViewModel(rijksRepository = get()) }
 }

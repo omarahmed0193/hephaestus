@@ -46,6 +46,8 @@ object Versions {
 
     const val work_runtime_ktx: String = "2.2.0"
 
+    const val touchimageview: String = "2.3.1"
+
     const val espresso_core: String = "3.2.0"
 
     const val activity_ktx: String = "1.0.0"
@@ -67,6 +69,8 @@ object Versions {
     const val material: String = "1.2.0-alpha02"
 
     const val shimmer: String = "0.5.0"
+
+    const val lottie: String = "3.3.1"
 
     const val aapt2: String = "3.5.3-5435860"
 

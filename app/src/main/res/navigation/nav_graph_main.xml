@@ -9,5 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="com.afterapps.hephaestus.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/navigateToArtDetails"
+            app:destination="@+id/artDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artDetailsFragment"
+        android:name="com.afterapps.hephaestus.ui.details.ArtDetailsFragment"
+        android:label="ArtDetailsFragment"
+        tools:layout="@layout/fragment_art_details">
+        <argument
+            android:name="artEntry"
+            app:argType="com.afterapps.hephaestus.model.domain.ArtEntry" />
+    </fragment>
+
 </navigation>

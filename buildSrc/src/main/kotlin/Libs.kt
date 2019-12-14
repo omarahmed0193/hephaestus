@@ -175,6 +175,12 @@ object Libs {
             Versions.work_runtime_ktx
 
     /**
+     * https://github.com/MikeOrtiz/TouchImageView
+     */
+    const val touchimageview: String = "com.github.MikeOrtiz:TouchImageView:" +
+            Versions.touchimageview
+
+    /**
      * https://developer.android.com/testing
      */
     const val espresso_core: String = "androidx.test.espresso:espresso-core:" +
@@ -229,6 +235,11 @@ object Libs {
      * http://facebook.github.io/shimmer-android
      */
     const val shimmer: String = "com.facebook.shimmer:shimmer:" + Versions.shimmer
+
+    /**
+     * https://github.com/airbnb/lottie-android
+     */
+    const val lottie: String = "com.airbnb.android:lottie:" + Versions.lottie
 
     /**
      * https://developer.android.com/studio

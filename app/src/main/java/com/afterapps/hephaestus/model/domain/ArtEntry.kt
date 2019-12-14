@@ -1,14 +1,17 @@
 package com.afterapps.hephaestus.model.domain
 
 import androidx.recyclerview.widget.DiffUtil
+import java.io.Serializable
 
 data class ArtEntry(
     val objectNumber: String,
     val imgUrl: String,
     val title: String,
     val longTitle: String,
+    val width: Int,
+    val height: Int,
     val pageNumber: Int //next page number for BoundaryCallback
-)
+) : Serializable
 
 // DiffCallback for the pager adapter
 object ArtEntryDiffCallback : DiffUtil.ItemCallback<ArtEntry>() {

@@ -12,6 +12,8 @@ fun ArtObject.asDatabaseObject(pageNumber: Int, indexInResponse: Int): DatabaseA
         imgUrl = webImage.url,
         title = title,
         longTitle = longTitle,
+        width = webImage.width,
+        height = webImage.height,
         indexInResponse = indexInResponse,
         pageNumber = pageNumber
     )
@@ -24,6 +26,6 @@ fun CollectionDetails.asDomainObject() = ArtEntryDetails(
     title = artObject.title,
     longTitle = artObject.longTitle,
     makerName = artObject.principalMaker,
-    description = artObject.plaqueDescriptionEnglish,
+    description = artObject.label.description,
     presentingDate = artObject.dating.presentingDate
 )

@@ -3,6 +3,8 @@ package com.afterapps.hephaestus.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +17,7 @@ import com.afterapps.hephaestus.network.NetworkStatus
 private const val TYPE_ART = 1
 private const val TYPE_PROGRESS = 2
 
-class ArtEntriesAdapter :
+class ArtEntriesAdapter(private val artEntryReactor: ArtEntryReactor) :
     PagedListAdapter<ArtEntry, RecyclerView.ViewHolder>(ArtEntryDiffCallback) {
 
 
@@ -70,6 +72,9 @@ class ArtEntriesAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(artEntry: ArtEntry) {
             binding.artEntry = artEntry
+            binding.artEntryReactor = artEntryReactor
+            binding.artEntryImageView = binding.artImageView
+            binding.artEntryTitleTextView = binding.artTitleTextView
             binding.executePendingBindings()
         }
     }
@@ -92,4 +97,9 @@ class ArtEntriesAdapter :
             notifyItemChanged(itemCount - 1)
         }
     }
+}
+
+// Interface to handle items click
+interface ArtEntryReactor {
+    fun onArtEntryClick(artEntry: ArtEntry, artImageView: ImageView, artTitleTextView: TextView)
 }

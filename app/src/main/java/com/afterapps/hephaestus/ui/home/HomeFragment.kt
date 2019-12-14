@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.afterapps.hephaestus.R
 import com.afterapps.hephaestus.databinding.FragmentHomeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,7 +33,7 @@ class HomeFragment : Fragment() {
     private fun initViews(binding: FragmentHomeBinding) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        binding.artEntriesRv.adapter = ArtEntriesAdapter()
+        binding.artEntriesRv.adapter = ArtEntriesAdapter(viewModel)
     }
 
     private fun initObservers(binding: FragmentHomeBinding) {
@@ -44,5 +47,24 @@ class HomeFragment : Fragment() {
         viewModel.currentPageNumber.observe(
             viewLifecycleOwner,
             Observer { it?.let { pageNumber -> viewModel.onPageNumberChanged(pageNumber) } })
+
+        // Navigate to art entry details fragment
+        viewModel.navigateToArtEntryDetails.observe(
+            viewLifecycleOwner,
+            Observer { navigateToArtEntryDetails(it) })
+    }
+
+    private fun navigateToArtEntryDetails(artItemListing: ArtItemListing) {
+        if (findNavController().currentDestination?.id != R.id.homeFragment) return
+
+        // Adding transition views and names to fragment bundle for the shared element transition
+        val extras = FragmentNavigatorExtras(
+            artItemListing.artImageView to "artImageView",
+            artItemListing.artTitleTextView to "artTitleTextView"
+        )
+        findNavController().navigate(
+            HomeFragmentDirections.navigateToArtDetails(artItemListing.artEntry),
+            extras
+        )
     }
 }

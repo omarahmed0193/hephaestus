@@ -31,6 +31,9 @@ private const val TIMEOUT_INTERVAL = 30L
 // Default artist
 private const val DEFAULT_MAKER = "Rembrandt+van+Rijn"
 
+// Default limit
+private const val DEFAULT_LIMIT = 30
+
 class RijksApi {
 
     interface ApiService {
@@ -39,6 +42,7 @@ class RijksApi {
         @GET("collection")
         suspend fun getCollections(
             @Query("p") pageNumber: Int? = 0,
+            @Query("ps") limitPerPage: Int? = 30,
             @Query(value = "involvedMaker", encoded = true) involvedMaker: String = DEFAULT_MAKER
         ): CollectionsResponse
 

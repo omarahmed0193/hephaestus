@@ -8,7 +8,7 @@ data class DetailsArtObject(
     val dating: Dating,
     val longTitle: String,
     val objectNumber: String,
-    val plaqueDescriptionEnglish: String,
+    val label: Description,
     val principalMaker: String,
     val title: String,
     val webImage: WebImage
@@ -16,4 +16,8 @@ data class DetailsArtObject(
 
 data class Dating(
     val presentingDate: String
+)
+
+data class Description(
+    val description: String
 )

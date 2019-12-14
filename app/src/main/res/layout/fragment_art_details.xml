@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.afterapps.hephaestus.ui.details.ArtDetailsViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_large">
+
+            <TextView
+                style="@style/TextAppearance.Hephaestus.Headline3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.artEntry.title}"
+                android:transitionName="artTitleTextView"
+                app:layout_collapseMode="parallax"
+                tools:text="Isaac and Rebecca, Known as ‘The Jewish Bride’" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_large" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="@dimen/art_entry_card_corner_radius"
+                app:cardElevation="@dimen/art_entry_card_elevation">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:transitionName="artImageView"
+                    app:imgSrc="@{viewModel.artEntry.imgUrl}"
+                    app:layout_collapseMode="parallax"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/art_placeholder" />
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_large" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:callStatusIdle="@{viewModel.networkStatus}">
+
+                <TextView
+                    style="@style/TextAppearance.Hephaestus.Headline4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.artEntryDetails.presentingDate}"
+                    android:textColor="@color/colorTransparentWhiteText"
+                    tools:text="c. 1665 - c. 1669" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_large" />
+
+                <TextView
+                    style="@style/TextAppearance.Hephaestus.Headline6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.artEntryDetails.description}"
+                    android:textColor="@color/colorTransparentWhiteText"
+                    tools:text="To prevent being killed and having his wife captured by King Abimelech, Isaac concealed his love for Rebecca by pretending they were brother and sister. However, their intimacy betrayed them when they thought they were not being spied on. Rembrandt depicts them in a tender moment. Furthermore, he works with exceptional freedom, applies the paint thickly, and scratches into it with the butt end of his paintbrush." />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:callStatusProgress="@{viewModel.networkStatus}">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextAppearance.Hephaestus.Headline4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_large" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextAppearance.Hephaestus.Headline6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_small" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextAppearance.Hephaestus.Headline6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_small" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextAppearance.Hephaestus.Headline6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
