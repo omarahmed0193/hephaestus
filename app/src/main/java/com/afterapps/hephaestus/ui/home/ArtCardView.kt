@@ -10,6 +10,8 @@ class ArtCardView(context: Context, attrs: AttributeSet) : CardView(context, att
 
     var artRatio: Float = 0f
 
+    var calculateHeight: Boolean = false
+
     init {
         context.theme.obtainStyledAttributes(
             attrs,
@@ -19,17 +21,24 @@ class ArtCardView(context: Context, attrs: AttributeSet) : CardView(context, att
 
             try {
                 artRatio = getFloat(R.styleable.ArtCardView_artRatio, 0f)
+
+                calculateHeight = getBoolean(R.styleable.ArtCardView_calculateHeight, false)
             } finally {
                 recycle()
             }
         }
     }
 
-    // Calculate card width according to image aspect ratio to avoid StaggeredLayout rearranging items
+    // Calculate card width/height according to image aspect ratio to avoid StaggeredLayout rearranging items
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val height = MeasureSpec.getSize(heightMeasureSpec)
-        val artWidthMeasureSpec =
-            MeasureSpec.makeMeasureSpec((height * artRatio).roundToInt(), MeasureSpec.EXACTLY)
-        super.onMeasure(artWidthMeasureSpec, heightMeasureSpec)
+        val width = MeasureSpec.getSize(widthMeasureSpec)
+        when (calculateHeight) {
+            true -> super.onMeasure(widthMeasureSpec, calculateMeasureSpec(width, 1 / artRatio))
+            else -> super.onMeasure(calculateMeasureSpec(height, artRatio), heightMeasureSpec)
+        }
     }
+
+    private fun calculateMeasureSpec(otherDimension: Int, ratio: Float) =
+        MeasureSpec.makeMeasureSpec((otherDimension * ratio).roundToInt(), MeasureSpec.EXACTLY)
 }

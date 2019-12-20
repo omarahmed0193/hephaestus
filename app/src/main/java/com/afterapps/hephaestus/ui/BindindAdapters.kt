@@ -1,5 +1,7 @@
 package com.afterapps.hephaestus.ui
 
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -9,6 +11,9 @@ import com.afterapps.hephaestus.model.domain.ArtEntry
 import com.afterapps.hephaestus.network.NetworkStatus
 import com.afterapps.hephaestus.ui.home.ArtEntriesAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.ortiz.touchview.TouchImageView
 
 
 //bind image url to image view using glide
@@ -44,4 +49,21 @@ fun bindIdleViewCallStatus(view: View, status: NetworkStatus?) {
         NetworkStatus.Loading -> View.GONE
         else -> View.VISIBLE
     }
+}
+
+//bind image url to touch image view using glide
+@BindingAdapter("touchImageSrc")
+fun bindTouchImage(imgView: TouchImageView, imgUrl: String?) {
+    Glide.with(imgView.context)
+        .asBitmap()
+        .load(imgUrl)
+        .into(object : CustomTarget<Bitmap>() {
+            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                imgView.setImageBitmap(resource)
+            }
+
+            override fun onLoadCleared(placeholder: Drawable?) {
+
+            }
+        })
 }

@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="ArtCardView">
         <attr name="artRatio" format="float" />
+        <attr name="calculateHeight" format="boolean" />
     </declare-styleable>
 </resources>

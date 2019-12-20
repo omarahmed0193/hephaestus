@@ -119,9 +119,6 @@ dependencies {
     // Lottie
     implementation(Libs.lottie)
 
-    // Facebook Shimmer
-    implementation(Libs.shimmer)
-
     // TouchImageView
     implementation (Libs.touchimageview)
 

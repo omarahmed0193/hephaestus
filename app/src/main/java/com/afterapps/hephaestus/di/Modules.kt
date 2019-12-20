@@ -6,6 +6,7 @@ import com.afterapps.hephaestus.network.RijksApi
 import com.afterapps.hephaestus.repository.RijksRepository
 import com.afterapps.hephaestus.ui.details.ArtDetailsViewModel
 import com.afterapps.hephaestus.ui.home.HomeViewModel
+import com.afterapps.hephaestus.ui.image.ArtImageViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -27,9 +28,18 @@ val dataModule = module {
 
 val homeModule = module {
 
-    //Home viewModel
+    // Home viewModel
     viewModel { HomeViewModel(rijksRepository = get()) }
+}
+
+val artDetailsModule = module {
 
     // Art details viewModel
     viewModel { ArtDetailsViewModel(rijksRepository = get()) }
+}
+
+val artImageModule = module {
+
+    // Art image viewModel
+    viewModel { ArtImageViewModel() }
 }

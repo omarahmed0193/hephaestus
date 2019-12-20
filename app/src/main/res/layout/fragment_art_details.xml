@@ -35,27 +35,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_large" />
 
-            <androidx.cardview.widget.CardView
+            <com.afterapps.hephaestus.ui.home.ArtCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{_ -> viewModel.onArtImageClick(viewModel.artEntry.imgUrl)}"
+                app:artRatio="@{viewModel.artEntry.artRatio}"
+                app:calculateHeight="true"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="@dimen/art_entry_card_corner_radius"
                 app:cardElevation="@dimen/art_entry_card_elevation">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
                     android:transitionName="@{viewModel.artEntry.imgUrl}"
                     app:imgSrc="@{viewModel.artEntry.imgUrl}"
                     app:layout_collapseMode="parallax"
                     tools:ignore="ContentDescription"
                     tools:src="@drawable/art_placeholder" />
-            </androidx.cardview.widget.CardView>
+            </com.afterapps.hephaestus.ui.home.ArtCardView>
 
             <Space
                 android:layout_width="match_parent"
@@ -95,57 +98,24 @@
                 android:orientation="vertical"
                 app:callStatusProgress="@{viewModel.networkStatus}">
 
-                <com.facebook.shimmer.ShimmerFrameLayout
+                <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/TextAppearance.Hephaestus.Headline4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.facebook.shimmer.ShimmerFrameLayout>
+                    android:layout_height="@dimen/art_entry_loading_card_height"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="loading_animation.json"
+                    app:lottie_loop="true" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/padding_large" />
+                    android:layout_height="@dimen/margin_large" />
 
-                <com.facebook.shimmer.ShimmerFrameLayout
+                <TextView
+                    style="@style/TextAppearance.Hephaestus.Subtitle1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/TextAppearance.Hephaestus.Headline6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.facebook.shimmer.ShimmerFrameLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/padding_small" />
-
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/TextAppearance.Hephaestus.Headline6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.facebook.shimmer.ShimmerFrameLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/padding_small" />
-
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        style="@style/TextAppearance.Hephaestus.Headline6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.facebook.shimmer.ShimmerFrameLayout>
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/loading_state_art_entry_details_message"
+                    android:textColor="@color/colorTransparentWhiteText" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Rijks</string>
     <string name="loading_state_art_entries_message">Set tight we\'re fetching your art</string>
+    <string name="loading_state_art_entry_details_message">Getting your art details</string>
 </resources>

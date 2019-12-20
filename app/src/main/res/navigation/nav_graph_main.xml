@@ -23,6 +23,19 @@
         <argument
             android:name="artEntry"
             app:argType="com.afterapps.hephaestus.model.domain.ArtEntry" />
+        <action
+            android:id="@+id/navigateToArtImage"
+            app:destination="@+id/artImageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artImageFragment"
+        android:name="com.afterapps.hephaestus.ui.image.ArtImageFragment"
+        android:label="ArtImageFragment"
+        tools:layout="@layout/fragment_art_image">
+        <argument
+            android:name="artImageUrl"
+            app:argType="string" />
     </fragment>
 
 </navigation>
