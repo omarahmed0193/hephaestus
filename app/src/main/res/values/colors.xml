@@ -9,4 +9,7 @@
     <!--Text colors-->
     <color name="colorTransparentWhiteText">#CCFFFFFF</color>
 
+    <!--Icon colors-->
+    <color name="ic_launcher_background">#212121</color>
+
 </resources>

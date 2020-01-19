@@ -21,6 +21,7 @@ import com.ortiz.touchview.TouchImageView
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     Glide.with(imgView.context)
         .load(imgUrl)
+        .thumbnail(0.1f)
         .into(imgView)
 }
 

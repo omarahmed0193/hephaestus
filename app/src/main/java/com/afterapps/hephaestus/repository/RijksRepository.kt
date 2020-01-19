@@ -78,4 +78,11 @@ class RijksRepository(
         }
     }
 
+    // Update art entries data in database
+    suspend fun updateArtEntries() {
+        withContext(Dispatchers.IO) {
+            getArtEntries(0)
+        }
+    }
+
 }
