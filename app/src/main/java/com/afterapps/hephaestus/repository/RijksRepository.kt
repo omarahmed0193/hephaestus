@@ -57,6 +57,7 @@ class RijksRepository(
         pageNumber: Int
     ) {
         for (artObject in collectionsResponse.artObjects) {
+            if (artObject.webImage.url.isNullOrEmpty()) continue
 
             // Get next index in database to save newly fetched data
             val indexInResponse = rijksDatabase.rijksDao.getNextIndexInResponse()

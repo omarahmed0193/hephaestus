@@ -9,7 +9,7 @@ import com.afterapps.hephaestus.model.domain.ArtEntryDetails
 fun ArtObject.asDatabaseObject(pageNumber: Int, indexInResponse: Int): DatabaseArtEntry =
     DatabaseArtEntry(
         objectNumber = objectNumber,
-        imgUrl = webImage.url,
+        imgUrl = webImage.url ?: "",
         title = title,
         longTitle = longTitle,
         artRatio = webImage.width.toFloat() / webImage.height.toFloat(),
@@ -21,7 +21,7 @@ fun ArtObject.asDatabaseObject(pageNumber: Int, indexInResponse: Int): DatabaseA
 //Convert collection details response to list of art entry details
 fun CollectionDetails.asDomainObject() = ArtEntryDetails(
     objectNumber = artObject.objectNumber,
-    imgUrl = artObject.webImage.url,
+    imgUrl = artObject.webImage.url ?: "",
     title = artObject.title,
     longTitle = artObject.longTitle,
     makerName = artObject.principalMaker,
