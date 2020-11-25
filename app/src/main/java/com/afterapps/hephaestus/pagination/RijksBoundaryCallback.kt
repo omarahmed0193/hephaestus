@@ -3,8 +3,8 @@ package com.afterapps.hephaestus.pagination
 import androidx.paging.PagedList
 import com.afterapps.hephaestus.model.domain.ArtEntry
 import com.afterapps.hephaestus.repository.RijksRepository
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class RijksBoundaryCallback :
     PagedList.BoundaryCallback<ArtEntry>(), KoinComponent {

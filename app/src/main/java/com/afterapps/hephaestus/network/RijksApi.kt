@@ -28,9 +28,6 @@ private const val API_KEY = BuildConfig.RIJKS_API_KEY
 //Timeout interval in seconds
 private const val TIMEOUT_INTERVAL = 30L
 
-// Default artist
-private const val DEFAULT_MAKER = "Rembrandt+van+Rijn"
-
 // Default limit
 private const val DEFAULT_LIMIT = 30
 
@@ -43,7 +40,7 @@ class RijksApi {
         suspend fun getCollections(
             @Query("p") pageNumber: Int? = 0,
             @Query("ps") limitPerPage: Int? = 30,
-            @Query(value = "involvedMaker", encoded = true) involvedMaker: String = DEFAULT_MAKER
+            @Query("toppieces") topPieces: Boolean? = true
         ): CollectionsResponse
 
         //GET Request for getting collection details data from RijksData API

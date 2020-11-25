@@ -25,9 +25,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:onClick="@{_ -> artEntryReactor.onArtEntryClick(artEntry, artEntryImageView)}"
         app:artRatio="@{artEntry.artRatio}"
-        app:cardBackgroundColor="@color/colorPrimary"
-        app:cardCornerRadius="@dimen/art_entry_card_corner_radius"
-        app:cardElevation="@dimen/art_entry_card_elevation">
+        app:cardBackgroundColor="@color/colorPrimary">
 
         <ImageView
             android:id="@+id/art_image_view"
@@ -36,8 +34,7 @@
             android:scaleType="fitXY"
             android:transitionName="@{artEntry.imgUrl}"
             app:imgSrc="@{artEntry.imgUrl}"
-            tools:ignore="ContentDescription"
-            tools:src="@drawable/art_placeholder" />
+            tools:ignore="ContentDescription" />
 
     </com.afterapps.hephaestus.ui.home.ArtCardView>
 </layout>

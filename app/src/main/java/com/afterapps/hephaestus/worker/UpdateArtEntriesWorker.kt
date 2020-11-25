@@ -3,8 +3,8 @@ package com.afterapps.hephaestus.worker
 import android.content.Context
 import androidx.work.*
 import com.afterapps.hephaestus.repository.RijksRepository
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.util.concurrent.TimeUnit
 
 class UpdateArtEntriesWorker(context: Context, workerParameters: WorkerParameters) :

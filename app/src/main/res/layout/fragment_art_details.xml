@@ -45,9 +45,7 @@
                 android:onClick="@{_ -> viewModel.onArtImageClick(viewModel.artEntry.imgUrl)}"
                 app:artRatio="@{viewModel.artEntry.artRatio}"
                 app:calculateHeight="true"
-                app:cardBackgroundColor="@color/colorPrimary"
-                app:cardCornerRadius="@dimen/art_entry_card_corner_radius"
-                app:cardElevation="@dimen/art_entry_card_elevation">
+                app:cardBackgroundColor="@color/colorPrimary">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -56,8 +54,7 @@
                     android:transitionName="@{viewModel.artEntry.imgUrl}"
                     app:imgSrc="@{viewModel.artEntry.imgUrl}"
                     app:layout_collapseMode="parallax"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/art_placeholder" />
+                    tools:ignore="ContentDescription" />
             </com.afterapps.hephaestus.ui.home.ArtCardView>
 
             <Space
